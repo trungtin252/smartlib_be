@@ -1,51 +1,46 @@
-// model/book.model.js
 const mongoose = require("mongoose");
 
 const bookSchema = new mongoose.Schema({
-  title: {
+  tieuDe: {
     type: String,
-    required: [true, "Please enter the title of the book"],
+    required: [true, "Vui lòng nhập tiêu đề của sách"],
   },
-  author: {
+  tacGia: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Author",
-    required: [true, "Please enter the author of the book"],
+    required: [true, "Vui lòng nhập tác giả của sách"],
   },
-  price: {
+  gia: {
     type: Number,
-    required: [true, "Please enter the price of the book"],
+    required: [true, "Vui lòng nhập giá của sách"],
   },
-  description: {
+  moTa: {
     type: String,
     required: false,
   },
-  inLibrary: {
+  soLuongTrongThuVien: {
     type: Number,
     required: true,
   },
-  image: {
+  hinhAnh: {
     type: String,
     required: true,
   },
-  category: {
+  theLoai: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
     required: false,
   },
-  pageCount: {
+  soTrang: {
     type: Number,
     required: true,
   },
-  publishYear: {
-    type: Date,
-    required: false,
-  },
-  publisher: {
+  nhaXuatBan: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Publisher",
     required: false,
   },
 });
 
-const Book = mongoose.model("Book", bookSchema);
+const Book = mongoose.model("Book", bookSchema, "sach");
 module.exports = Book;

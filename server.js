@@ -9,6 +9,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Set static folder
+app.use("/api/uploads", express.static("app/public/uploads"));
+
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to SmartLib." });
 });
