@@ -7,4 +7,6 @@ route.get("/", BorrowController.getBorrowbyUserId);
 
 route.post("/add", BorrowController.createBorrow);
 
+route.delete("/:id", BorrowController.deleteBorrow);
+
 module.exports = route;

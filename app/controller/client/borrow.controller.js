@@ -41,3 +41,12 @@ module.exports.createBorrow = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.deleteBorrow = async (req, res, next) => {
+  try {
+    await BorrowService.deleteBorrow(req.params.id);
+    res.status(200).json("Xóa thành công !");
+  } catch (error) {
+    next(error);
+  }
+};

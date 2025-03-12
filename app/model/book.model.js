@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+const Author = require("./author.model");
 const bookSchema = new mongoose.Schema({
   tieuDe: {
     type: String,
