@@ -28,9 +28,9 @@ const borrowSchema = mongoose.Schema({
   },
   // whether the user actually borrow the book or not
   chapNhan: {
-    type: Boolean,
+    type: String,
     required: true,
-    default: false,
+    default: "cho_duyet",
   },
   // whether the user has returned the book or not
   daTra: {

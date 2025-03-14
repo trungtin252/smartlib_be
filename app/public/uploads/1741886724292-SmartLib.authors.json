@@ -1,0 +1,50 @@
+[
+  {
+    "_id": { "$oid": "66cc81a65b8e4dbc790c245c" },
+    "ten": "Lorem Ipsum",
+    "quocTich": "Viet Nam",
+    "ngaySinh": "1985-06-15T00:00:00Z",
+    "gioiTinh": true,
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "66cc81b85b8e4dbc790c245f" },
+    "ten": "John Doe",
+    "quocTich": "Sydney, Australia",
+    "ngaySinh": "1992-11-23T00:00:00Z",
+    "gioiTinh": true,
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "66cc81c55b8e4dbc790c2462" },
+    "ten": "Dolor Amet",
+    "quocTich": "Germany",
+    "ngaySinh": "1978-09-05T00:00:00Z",
+    "gioiTinh": true,
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "66cc81e35b8e4dbc790c2465" },
+    "ten": "Quia",
+    "quocTich": "Toronto, Canada",
+    "ngaySinh": "1995-02-14T00:00:00Z",
+    "gioiTinh": false,
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "671c6a29b992e787faa09749" },
+    "ten": "Thomas Nield",
+    "quocTich": "USA",
+    "ngaySinh": "1980-12-01T00:00:00Z",
+    "gioiTinh": true,
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "671ca78cb992e787faa09bd2" },
+    "ten": "Mark Z. Danielewski",
+    "quocTich": "USA",
+    "ngaySinh": "1966-03-05T00:00:00Z",
+    "gioiTinh": true,
+    "__v": 0
+  }
+]

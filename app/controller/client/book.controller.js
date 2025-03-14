@@ -21,15 +21,16 @@ module.exports.index = async (req, res, next) => {
 
   try {
     let books = [];
+    let totalBooks = 0;
     if (Object.keys(query).length === 0) {
       // Xử lý getAll
       books = await bookService.getAllBooks(page, limit);
+      totalBooks = await bookService.countTotalPage();
     } else {
       // Xử lý getByQuery
       books = await bookService.getBookByQuery(limit, query);
+      totalBooks = books.length;
     }
-
-    const totalBooks = await bookService.countTotalPage();
     res.status(200).json({ books, totalPages: Math.ceil(totalBooks / limit) });
   } catch (error) {
     next(error);
