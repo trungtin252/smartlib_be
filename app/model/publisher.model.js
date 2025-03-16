@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const publisherSchema = mongoose.Schema({
+  maNXB: {
+    type: String,
+    unique: true,
+  },
   ten: {
     type: String,
     required: [true, "Vui lòng nhập địa chỉ"],

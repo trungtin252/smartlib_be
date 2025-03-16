@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
-  maDocGia: {
+const staffSchema = mongoose.Schema({
+  maNhanVien: {
     type: String,
     unique: true,
   },
@@ -40,5 +40,5 @@ const userSchema = mongoose.Schema({
   },
 });
 
-const User = mongoose.model("User", userSchema, "docgia");
-module.exports = User;
+const Staff = mongoose.model("Staff", staffSchema, "nhanvien");
+module.exports = Staff;

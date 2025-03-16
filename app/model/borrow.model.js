@@ -19,23 +19,22 @@ const borrowSchema = mongoose.Schema({
   // the day the user is expected to return the book
   ngayDenHan: {
     type: Date,
-    required: [true, "Please enter the due date"],
+    require: false,
   },
   // the day the user actually returns the book
   ngayTra: {
     type: Date,
     required: false,
   },
+  ngayLaySach: {
+    type: Date,
+    required: false,
+  },
   // whether the user actually borrow the book or not
-  chapNhan: {
+  trangThai: {
     type: String,
     required: true,
     default: "cho_duyet",
-  },
-  // whether the user has returned the book or not
-  daTra: {
-    type: Boolean,
-    required: true,
   },
   // notes about this borrow
   ghiChu: {

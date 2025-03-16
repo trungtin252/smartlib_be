@@ -32,7 +32,6 @@ module.exports.createBorrow = async (req, res, next) => {
       sach: req.body.bookId,
       ngayMuon: currentDate,
       ngayDenHan: futureDate,
-      daTra: false,
     });
     await borrow.save();
     book.soLuongTrongThuVien -= 1;

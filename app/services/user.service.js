@@ -12,4 +12,8 @@ const updateUser = async (userId, updateData) => {
   return await UserModal.findByIdAndUpdate(userId, updateData, { new: true });
 };
 
-module.exports = { getUserbyID, updateUser, getUserbyPhone };
+const getAll = async () => {
+  return await UserModal.find();
+};
+
+module.exports = { getUserbyID, updateUser, getUserbyPhone, getAll };

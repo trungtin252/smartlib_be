@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
 
 const Author = require("./author.model");
+const Publisher = require("./publisher.model");
+const Category = require("./category.model");
 const bookSchema = new mongoose.Schema({
+  maSach: {
+    type: String,
+    require: true,
+  },
   tieuDe: {
     type: String,
     required: [true, "Vui lòng nhập tiêu đề của sách"],
@@ -39,6 +45,10 @@ const bookSchema = new mongoose.Schema({
   nhaXuatBan: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Publisher",
+    required: false,
+  },
+  namXuatBan: {
+    type: String,
     required: false,
   },
 });

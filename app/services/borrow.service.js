@@ -13,5 +13,5 @@ module.exports.deleteBorrow = async (id) => {
 };
 
 module.exports.getBorrowById = async (id) => {
-  return BorrowModal.findbyId(id);
+  return BorrowModal.findById(id);
 };

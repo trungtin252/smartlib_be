@@ -18,7 +18,9 @@ app.get("/", (req, res) => {
 
 // Use route
 const routeClient = require("./app/routes/client/index.route");
+const routeAdmin = require("./app/routes/admin/index.route");
 routeClient(app);
+routeAdmin(app);
 
 // handle 404 response
 app.use((req, res, next) => {
