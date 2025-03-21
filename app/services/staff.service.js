@@ -9,7 +9,7 @@ const getStaffbyCode = async (staffCode) => {
 };
 
 const getStaffbyId = async (staffId) => {
-  return StaffModel.findById(staffId);
-};
+    return StaffModel.findById(staffId);
+}
 
-module.exports = { getAllStaff, getStaffbyCode, getStaffbyId };
+module.exports = { getAllStaff, getStaffbyCode ,getStaffbyId };
