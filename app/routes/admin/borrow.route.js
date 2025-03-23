@@ -7,4 +7,6 @@ route.get("/", BorrowController.getBorrowAllOrbyUserId);
 
 route.post("/changestatus", BorrowController.chageStatus);
 
+route.delete("/:id", BorrowController.deleteBorrow);
+
 module.exports = route;

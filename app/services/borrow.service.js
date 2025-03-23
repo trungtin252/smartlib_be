@@ -1,7 +1,7 @@
 const BorrowModal = require("../model/borrow.model");
 
 module.exports.getBorrow = async (query) => {
-  return BorrowModal.find(query).populate("sach");
+  return BorrowModal.find(query).populate("sach").populate("docGia");
 };
 
 module.exports.createBorrow = async (data) => {

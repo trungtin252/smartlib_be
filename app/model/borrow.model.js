@@ -4,24 +4,27 @@ const borrowSchema = mongoose.Schema({
   docGia: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: [true, "Please enter the name of this user"],
+    required: true,
   },
   sach: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Book",
-    required: [true, "Please enter the title of the book"],
+    required: true,
   },
   // the day the user borrows the book
   ngayMuon: {
     type: Date,
-    required: [true, "Please enter the borrow date"],
+    required: true,
+  },
+  hanLaySach: {
+    type: Date,
+    require: true,
   },
   // the day the user is expected to return the book
   ngayDenHan: {
     type: Date,
     require: false,
   },
-  // the day the user actually returns the book
   ngayTra: {
     type: Date,
     required: false,
@@ -40,6 +43,18 @@ const borrowSchema = mongoose.Schema({
   ghiChu: {
     type: String,
     required: false,
+  },
+  maYeuCau: {
+    type: String,
+    require: false,
+  },
+  maBiMat: {
+    type: String,
+    require: false,
+  },
+  maQR: {
+    type: String,
+    require: false,
   },
 });
 
