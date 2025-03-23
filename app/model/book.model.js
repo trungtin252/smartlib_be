@@ -51,6 +51,10 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  ngayThem: {
+    type: Date,
+    require: false,
+  },
 });
 
 const Book = mongoose.model("Book", bookSchema, "sach");

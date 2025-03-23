@@ -1,3 +1,4 @@
+const { generateId } = require("../../helpers/generateId");
 const Book = require("../../model/book.model");
 const Category = require("../../model/category.model");
 const AuthorService = require("../../services/author.service");
@@ -74,29 +75,31 @@ module.exports.getBookById = async (req, res, next) => {
 
 module.exports.createBook = async (req, res, next) => {
   try {
-    const book = new Book({ tieuDe: "Check" });
-    console.log(book);
-    // const currentDate = new Date();
-    // const futureDate = new Date(currentDate);
-    // futureDate.setDate(currentDate.getDate() + 14);
-    // const borrow = new Borrow({
-    //   docGia: req.body.userId,
-    //   sach: req.body.bookId,
-    //   ngayMuon: currentDate,
-    //   ngayDenHan: futureDate,
-    // });
-    // await borrow.save();
-    // book.soLuongTrongThuVien -= 1;
-    // await book.save();
+    const bookId = generateId("BOOK_");
+    let newBookData = {};
 
-    // res.status(201).json(borrow);
+    Object.keys(req.body).forEach((key) => {
+      if (req.body[key] !== "" && req.body[key] !== "undefined") {
+        newBookData[key] = req.body[key];
+      }
+    });
+    newBookData["maSach"] = bookId;
+    newBookData["ngayThem"] = new Date();
+    console.log(newBookData);
+    if (req.file) {
+      newBookData.hinhAnh = `http://localhost:${port}/api/uploads/${req.file.filename}`;
+    }
+
+    const newBook = new Book(newBookData);
+    await newBook.save();
+
+    res.status(201).json(newBook);
   } catch (error) {
     next(error);
   }
 };
 
 exports.updateBook = async (req, res) => {
-  console.log(req.file);
   try {
     const id = req.params.id;
     const book = await Book.findById(id);
@@ -106,7 +109,14 @@ exports.updateBook = async (req, res) => {
     }
 
     // Cập nhật dữ liệu sách
-    let updatedData = { ...req.body };
+    let updatedData = {};
+    Object.keys(req.body).forEach((key) => {
+      if (req.body[key] !== "" && req.body[key] !== "undefined") {
+        updatedData[key] = req.body[key];
+      }
+    });
+
+    console.log(updatedData);
 
     if (req.file) {
       updatedData.hinhAnh = `http://localhost:${port}/api/uploads/${req.file.filename}`;
