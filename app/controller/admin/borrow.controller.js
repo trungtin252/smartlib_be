@@ -46,8 +46,7 @@ module.exports.chageStatus = async (req, res, next) => {
       if (newstatus == "da_lay") {
         borrow.hanLaySach = "";
       }
-      if (newstatus == "da_tra") {
-        borrow.trangThai = "hoan_thanh";
+      if (newstatus == "hoan_thanh") {
         const bookId = borrow.sach.toString();
         const book = await bookService.getBookById(bookId);
         book.soLuongTrongThuVien += 1;
