@@ -1,7 +1,14 @@
 const BorrowModal = require("../model/borrow.model");
 
-module.exports.getBorrow = async (query) => {
-  return BorrowModal.find(query).populate("sach").populate("docGia");
+module.exports.getBorrow = async (
+  query,
+  sortBy = "ngayMuon",
+  sortOrder = -1
+) => {
+  return BorrowModal.find(query)
+    .sort({ [sortBy]: sortOrder })
+    .populate("sach")
+    .populate("docGia");
 };
 
 module.exports.createBorrow = async (data) => {

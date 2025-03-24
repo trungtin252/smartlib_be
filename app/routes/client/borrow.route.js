@@ -7,6 +7,6 @@ route.get("/", BorrowController.getBorrowAllOrbyUserId);
 
 route.post("/add", BorrowController.createBorrow);
 
-route.delete("/:id", BorrowController.deleteBorrow);
+route.post("/:id", BorrowController.cancleRequest);
 
 module.exports = route;

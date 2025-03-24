@@ -55,6 +55,10 @@ const bookSchema = new mongoose.Schema({
     type: Date,
     require: false,
   },
+  viTri: {
+    type: String,
+    require: false,
+  },
 });
 
 const Book = mongoose.model("Book", bookSchema, "sach");

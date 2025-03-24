@@ -75,16 +75,16 @@ module.exports.createBorrow = async (req, res, next) => {
   }
 };
 
-module.exports.deleteBorrow = async (req, res, next) => {
+module.exports.cancleRequest = async (req, res, next) => {
   try {
     const borrow = await BorrowService.getBorrowById(req.params.id);
     const bookId = borrow.sach.toString();
     const book = await bookService.getBookById(bookId);
     book.soLuongTrongThuVien += 1;
-    borrow.trangThai = "hoan_thanh";
+    borrow.trangThai = "da_huy";
     await borrow.save();
     await book.save();
-    res.status(200).json("Xóa thành công !");
+    res.status(200).json("Hủy thành công !");
   } catch (error) {
     next(error);
   }

@@ -85,7 +85,6 @@ module.exports.createBook = async (req, res, next) => {
     });
     newBookData["maSach"] = bookId;
     newBookData["ngayThem"] = new Date();
-    console.log(newBookData);
     if (req.file) {
       newBookData.hinhAnh = `http://localhost:${port}/api/uploads/${req.file.filename}`;
     }
@@ -115,8 +114,6 @@ exports.updateBook = async (req, res) => {
         updatedData[key] = req.body[key];
       }
     });
-
-    console.log(updatedData);
 
     if (req.file) {
       updatedData.hinhAnh = `http://localhost:${port}/api/uploads/${req.file.filename}`;

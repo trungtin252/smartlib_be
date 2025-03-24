@@ -12,13 +12,11 @@ module.exports.getBorrowAllOrbyUserId = async (req, res, next) => {
     const borrowInfo = await BorrowService.getBorrow(query);
     const currentDate = new Date();
     // Xử lý sách quá hạn lấy
-    borrowInfo.forEach((borrow) => {
-      if (borrow.hanLaySach) {
-        if (new Date(borrow.hanLaySach) <= new Date(currentDate)) {
-          handleExpiredGetBook(borrow._id);
-        }
+    for (const borrow of borrowInfo) {
+      if (borrow.hanLaySach && new Date(borrow.hanLaySach) <= currentDate) {
+        await handleExpiredGetBook(borrow._id);
       }
-    });
+    }
     res.status(200).json(borrowInfo);
   } catch (error) {
     next(error);
@@ -35,19 +33,8 @@ const handleExpiredGetBook = async (id) => {
 module.exports.chageStatus = async (req, res, next) => {
   try {
     const { id, newstatus, note, takenDay } = req.body;
-    console.log(newstatus);
-    if (newstatus == "da_tra") {
-      const borrow = await BorrowService.getBorrowById(id);
-      const bookId = borrow.sach.toString();
-      const book = await bookService.getBookById(bookId);
-      book.soLuongTrongThuVien += 1;
-      borrow.trangThai = "hoan_thanh";
-      await borrow.save();
-      await book.save();
-      res.status(200).json("Trả sách thành công !");
-    }
-
     const borrow = await BorrowService.getBorrowById(id.toString());
+
     if (newstatus) {
       borrow.trangThai = newstatus;
       if (newstatus == "chap_nhan") {
@@ -58,6 +45,13 @@ module.exports.chageStatus = async (req, res, next) => {
       }
       if (newstatus == "da_lay") {
         borrow.hanLaySach = "";
+      }
+      if (newstatus == "da_tra") {
+        borrow.trangThai = "hoan_thanh";
+        const bookId = borrow.sach.toString();
+        const book = await bookService.getBookById(bookId);
+        book.soLuongTrongThuVien += 1;
+        await book.save();
       }
     }
     if (note) {
