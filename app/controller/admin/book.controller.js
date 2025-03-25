@@ -10,7 +10,7 @@ require("dotenv").config();
 const port = process.env.PORT;
 
 module.exports.index = async (req, res, next) => {
-  const { page = 1, limit = 5, sortBy = "maSach", sortOder = 1 } = req.query;
+  let { page = 1, limit = 5, sortBy = "maSach", sortOder = 1 } = req.query;
   const query = {};
   if (req.query.title) {
     query.tieuDe = { $regex: req.query.title, $options: "i" };
@@ -31,6 +31,9 @@ module.exports.index = async (req, res, next) => {
     let totalBooks = 0;
     if (Object.keys(query).length === 0) {
       // Xử lý getAll
+      if (sortBy == "ngayThem") {
+        sortOder = -1;
+      }
       books = await bookService.getAllBooks(page, limit, sortBy, sortOder);
       totalBooks = await bookService.countTotalPage();
     } else {
