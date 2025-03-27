@@ -137,4 +137,4 @@ dist
 
 
 ./node_modules
-./app/public/*
+/app/public/*

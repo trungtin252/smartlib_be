@@ -45,10 +45,12 @@ module.exports.chageStatus = async (req, res, next) => {
       }
       if (newstatus == "da_lay") {
         borrow.hanLaySach = "";
+        borrow.ngayLaySach = new Date();
       }
       if (newstatus == "hoan_thanh") {
         const bookId = borrow.sach.toString();
         const book = await bookService.getBookById(bookId);
+        borrow.ngayTra = new Date();
         book.soLuongTrongThuVien += 1;
         await book.save();
       }
